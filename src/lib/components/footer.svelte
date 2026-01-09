@@ -6,9 +6,9 @@
     </div>
     <div class="col">
         <ul id="linklist">
-            <l1><a href="whatwhat.com">GitHub page</a></l1>
-            <l1><a href="">This page</a></l1>
-            <l1><a href="">The actual BoilerExams page</a></l1>
+            <l1><a href="https://github.com/ancientstraits/boilerexams-assessment">GitHub page</a></l1>
+            <l1><a href="https://boilerexams-assessment.vercel.app/">This page</a></l1>
+            <l1><a href="https://www.boilerexams.com/">The actual BoilerExams page</a></l1>
         </ul>
     </div>
 </div>

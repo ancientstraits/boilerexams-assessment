@@ -57,3 +57,9 @@
         </div>
     {/each}
 </div>
+
+<style>
+    iframe {
+        width: 100%;
+    }
+</style>

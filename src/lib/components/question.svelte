@@ -194,6 +194,16 @@
         color: black;
     }
 
+    @media (max-width: 600px) {
+        .choice.correct, .choice.incorrect {
+            padding-bottom: 40px !important;
+        }
+
+        .stats {
+            bottom: 10px;
+        }
+    }
+
     .choice {
         display: block;
 
