@@ -1,8 +1,0 @@
-@font-face {
-    font-family: "merriweather";
-    src: url("merriweather.ttf");
-}
-
-* {
-    font-family: "merriweather", sans-serif;
-}
