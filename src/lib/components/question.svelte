@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Question } from '$lib/question'
     import { indexToLetter } from '$lib/util'
+    import { onMount } from 'svelte';
     import Explanation from './explanation.svelte';
     import Latex from "./latex.svelte";
 
@@ -9,6 +10,15 @@
     let chosenAnswer = $state<number | null>(null)
     let error = $state<string | null>(null)
     let reveal = $state(false)
+
+    function reload() {
+        const choicesDiv = document.querySelector('#choices')!
+        for (const child of choicesDiv.children) {
+            const input: HTMLInputElement = child.querySelector('input')!
+            input.checked = false
+        }
+        window.location.reload()
+    }
 
     function showCongrats(): boolean {
         return reveal && (chosenAnswer != null) && question.data.solution.includes(chosenAnswer);
@@ -57,6 +67,7 @@
             {:else}
                 <div id="ohno">
                     You didn't get the question correct, but that's okay.
+                    <button onclick={() => reload()}>Try again?</button>
                 </div>
             {/if}
         {/if}
@@ -80,9 +91,7 @@
     </form>
 
     <div class={['explanation', reveal ? 'show' : '']}>
-        <br />
-        <br />
-        <hr />
+        <br style="line-height: 40px;" />
         <Explanation exp={question.explanation} />
     </div>
 </div>
@@ -129,10 +138,30 @@
         user-select: text;
     }
 
+    button {
+        color: black;
+
+        display: inline-block;
+        border: 2px solid #AAA;
+        margin: 0;
+        padding: 5px;
+        background-color: white;
+
+        transition: all 0.2s;
+    }
+    button:hover {
+        background-color: #AAA;
+        border-color: black;
+    }
+    button:active {
+        background-color: black;
+        color: white;
+    }
+
     input[type=submit] {
         color: white;
 
-        display: block;
+        display: inline-block;
         border: 2px solid #AAA;
         margin: 0;
         padding: 10px;
@@ -147,16 +176,12 @@
         border-color: black;
     }
     input[type=submit]:active {
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     .choice:has(input:checked) {
-        background-color: cyan;
-    }
-
-    .choice:has(input:checked) {
-        background-color: cyan;
+        background-color: rgb(110, 197, 255);
         border-color: #3bb7ff;
     }
 
@@ -198,6 +223,6 @@
     }
     .incorrect {
         color: white;
-        background-color: rgb(173, 0, 0);
+        background-color: rgb(80, 0, 0);
     }
 </style>
