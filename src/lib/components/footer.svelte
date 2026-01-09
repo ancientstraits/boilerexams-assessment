@@ -3,6 +3,8 @@
 <div id="root">
     <div class="col">
         <b><i>BoilerExams</i></b>
+        <br>
+        Created by Rishab Tirupathi
     </div>
     <div class="col">
         <ul id="linklist">
